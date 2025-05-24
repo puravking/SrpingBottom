@@ -1,0 +1,474 @@
+.childContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  visibility: visible;
+  transition: opacity 0.5s, visibility 0.5s;
+}
+
+.childContainer[aria-hidden="true"] {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.homePage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background: rgba(135, 206, 250, 0.3); /* Soft sky blue transparent */
+  backdrop-filter: blur(6px);
+  opacity: 1;
+  color: #333;
+}
+
+.contents {
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem 1rem 0 0;
+  background: #ffffff; /* bright white background */
+  overflow-y: hidden;
+  --default-transitions: transform 0.5s, border-radius 0.5s;
+  transition: var(--default-transitions);
+  transform: translateY(0);
+  width: 80vw;
+  max-height: 100vh;
+  height: 30vh;
+  box-sizing: border-box;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  color: #333;
+}
+
+.contents:not(.notSelectable) {
+  transition: var(--default-transitions), height 0.5s;
+}
+
+.contents.fullscreen {
+  border-radius: 5px;
+}
+
+.childContainer[aria-hidden="true"] .contents {
+  transform: translateY(100%);
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dragArea {
+  width: 3rem;
+  margin: auto;
+  padding: 1rem 0rem;
+  cursor: grab;
+}
+
+.dragThumb {
+  width: inherit;
+  height: 0.25rem;
+  background: #1e90ff; /* Dodger blue */
+  border-radius: 0.125rem;
+}
+
+.closeContainer {
+  background-color: transparent;
+  color: #1e90ff;
+  border-radius: 50%;
+  border: 2px solid #1e90ff;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.closeContainer:hover {
+  background-color: #1e90ff;
+  color: white;
+}
+
+.body {
+  flex-grow: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  gap: 1rem;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.displayMessage {
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: #1e90ff; /* Dodger blue */
+  text-align: center;
+  margin-top: 2rem;
+}
+
+@media only screen and (max-width: 900px) {
+  .contents {
+    min-width: 250px;
+    max-width: 900px;
+    width: 100vw;
+  }
+}
+.photoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  color: #222;
+}
+
+.profilePhoto {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #4f46e5; /* nice border color */
+  box-shadow: 0 0 10px rgba(79, 70, 229, 0.5);
+}
+
+.profileLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  color: #4f46e5;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.profileLink {
+  color: #4f46e5;
+  text-decoration: none;
+  border: 2px solid #4f46e5;
+  padding: 0.5rem 1.2rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.profileLink:hover {
+  background-color: #4f46e5;
+  color: white;
+}
+.mainContainer {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background: #f9fafb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 2rem;
+  box-sizing: border-box;
+}
+
+/* Photo container fixed on top center */
+.photoContainer {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 1000;
+  user-select: none;
+  pointer-events: none; /* so dragging still works on BottomSheet */
+  color: #333;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.profilePhoto {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #4f46e5;
+  box-shadow: 0 0 15px rgba(79, 70, 229, 0.6);
+  margin-bottom: 0.5rem;
+}
+
+/* BottomSheet remains at bottom */
+.childContainer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  background: white;
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+  touch-action: none;
+  user-select: none;
+}
+
+/* Keep rest of your styles intact */
+/* Blur effect */
+.blurred {
+  filter: blur(6px);
+  transition: filter 0.3s ease;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Make the container and photo responsive and nicely aligned */
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  min-height: 100vh;
+  background-color: #f0f2f5;
+  box-sizing: border-box;
+}
+
+.photoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.profilePhoto {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 600px) {
+  .profilePhoto {
+    width: 90px;
+    height: 90px;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  .mainContainer {
+    padding: 10px;
+  }
+}
+.hidden {
+  display: none;
+}
+
+.blurred {
+  filter: blur(6px);
+  transition: filter 0.3s ease;
+  user-select: none;
+  pointer-events: none;
+}
+/* Reset and container */
+.mainContainer {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  background: #f0f2f5;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.photoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.profilePhoto {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  user-select: none;
+}
+
+.photoContainer h2 {
+  margin-top: 12px;
+  font-size: 1.5rem;
+  color: #333;
+  user-select: none;
+}
+
+.blurred {
+  filter: blur(6px);
+  user-select: none;
+  pointer-events: none;
+}
+
+.hidden {
+  display: none;
+}
+
+/* BottomSheet container */
+.childContainer {
+  width: 100%;
+  max-width: 480px;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 15px 15px 0 0;
+  background-color: #fff;
+  transition: height 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Transparent clickable area above to close */
+.homePage {
+  height: 40px;
+  cursor: pointer;
+}
+
+/* Bottom sheet content */
+.contents {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 10px 20px 30px 20px;
+  overflow-y: auto;
+  user-select: auto;
+  transition: background-color 0.3s ease;
+}
+
+.fullscreen {
+  border-radius: 0;
+  height: 100vh !important;
+  max-width: 100%;
+}
+
+/* Prevent user selection while dragging */
+.notSelectable {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Header controls */
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 8px;
+}
+
+/* Drag handle area */
+.dragArea {
+  flex-grow: 1;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: grab;
+  user-select: none;
+}
+
+/* Drag thumb visual */
+.dragThumb {
+  width: 45px;
+  height: 6px;
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+/* Close button */
+.closeContainer {
+  border: none;
+  background-color: transparent;
+  color: #888;
+  font-size: 18px;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+.closeContainer:hover {
+  color: #333;
+}
+
+/* Profile Links */
+.profileLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.profileLink {
+  text-decoration: none;
+  font-weight: 600;
+  color: #0073e6;
+  font-size: 1.2rem;
+  transition: color 0.2s ease;
+}
+
+.profileLink:hover,
+.profileLink:focus {
+  color: #005bb5;
+  outline: none;
+}
+
+.displayMessage {
+  font-size: 1.2rem;
+  color: #555;
+  text-align: center;
+  margin-top: 20px;
+  user-select: none;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .profilePhoto {
+    width: 90px;
+    height: 90px;
+  }
+
+  .photoContainer h2 {
+    font-size: 1.2rem;
+  }
+
+  .childContainer {
+    max-width: 100%;
+  }
+}
+.blurred {
+  filter: blur(100px);
+  user-select: none;
+  pointer-events: none;
+}
