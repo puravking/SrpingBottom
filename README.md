@@ -8,7 +8,7 @@ Created a draggable bottom sheet in React involves setting up a component with a
 Key challenges include accurately tracking the sheet's position during drag movements, integrating with current CSS styles, making the component responsive on different devices, handling browser inconsistencies, and ensuring accessibility for all users.
 
 ## Deployment App
-https://68311aa533cca08a70007669--imaginative-genie-5a9ba5.netlify.app/
+(https://68311dfe8988c68ebefc5dce--fanciful-frangipane-b3fc8b.netlify.app/)
 
 
 ## Features
