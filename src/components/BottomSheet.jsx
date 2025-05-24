@@ -103,7 +103,6 @@ const BottomSheet = () => {
       <div className={`flex photoContainer ${isFullyOpen ? "blurred" : ""}`}>
         <img src={PHOTO_URL} alt="Purav" className="profilePhoto" />
         <h2>Hello there</h2>
-        <p>Assignment 1: React Bottom Sheet with Multiple Screen Snap Points and Spring Motion.</p>
         <p>Drag from bottom</p>
       </div>
 
