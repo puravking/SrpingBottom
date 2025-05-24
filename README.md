@@ -1,40 +1,33 @@
-# React Draggable Bottom Sheet Component
+# React Bottom Draggable Flam
 
 ## Introduction
-Build a React application that features a bottom sheet with multiple screen snap points and incorporates spring motion animations.
-
+Develop a React app that includes a bottom sheet with multiple snap points and smooth spring-based animations.
 ## Approach and Challenges:
-Implementing a draggable bottom sheet in React involves structuring the component with a drag handle and content area, using React state to manage position, handling mouse events to update position based on Y-coordinates, and applying CSS transitions for smooth animation. Existing CSS classes should be integrated for styling.
-Challenges in creating a draggable bottom sheet include precise calculation of sheet position during user drag actions, seamless integration of existing CSS styles, ensuring responsiveness across various screen sizes, addressing cross-browser compatibility issues, and maintaining accessibility for all users. 
+Created a draggable bottom sheet in React involves setting up a component with a handle for dragging and a section for content. The position of the sheet is managed through React state, and mouse or touch events are used to update its vertical position based on Y-coordinates. Smooth transitions are achieved with CSS animations, while existing class styles are reused for consistent design.
 
-## Deplolyed App
-[https://deployed-site.whatever](https://flame-assignment.vercel.app/)
+Key challenges include accurately tracking the sheet's position during drag movements, integrating with current CSS styles, making the component responsive on different devices, handling browser inconsistencies, and ensuring accessibility for all users.
 
-## Video Walkthrough of the project
-https://drive.google.com/file/d/14IM6DkuU0qDzVh4PKqXOnCw1WDsWj6qa/view?usp=sharing
+## Deployment(cheery-cranachan-8dcaac.netlify.app)
+
 
 ## Features
 List out the key features of your application.
 
 - Drag and Drop
-- Responsiveness
 - CSS Animation
 
 ## Installation & Getting started
-Detailed instructions on how to install, configure, and get the project running.
 
 ```bash
-git clone https://github.com/rahulyadav826870/flame-assignment
-cd flame-assignment
+git clone https://github.com/puravking/SrpingBottom.git
+cd SrpingBottom
 npm install
 npm run dev
 ```
-
-
-Include screenshots as necessary.
 
 ## Technology Stack
 List and provide a brief overview of the technologies used in the project.
 
 - vite + react.js
+- HTML
 - CSS
