@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import "./BottomSheet.css";
 
 import PHOTO_URL from "../image.png"; // adjust path as needed
 
 const GITHUB_URL = "https://github.com/puravking";
 const LINKEDIN_URL = "https://www.linkedin.com/in/purav-5641b7254/";
-const LEETCODE_URL = "https://leetcode.com/yourleetcodeusername/";
+const LEETCODE_URL = "https://leetcode.com/kumaprpurav59/";
 
 const BottomSheet = () => {
   const [classChange, setClassChange] = useState(false);
@@ -99,18 +100,17 @@ const BottomSheet = () => {
 
   return (
     <div className="mainContainer">
-      {/* Photo and greeting */}
       <div className={`flex photoContainer ${isFullyOpen ? "blurred" : ""}`}>
         <img src={PHOTO_URL} alt="Purav" className="profilePhoto" />
         <h2>Hello there</h2>
         <p>Drag from bottom</p>
       </div>
 
-      {/* Bottom sheet */}
       <div className="childContainer" role="dialog">
         <div className="homePage" onClick={() => setHeight(10)}></div>
-        <div
-          style={{ height: `${height}vh` }}
+        <motion.div
+          animate={{ height: `${height}vh` }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
           className={
             height === 100
               ? classChange
@@ -142,7 +142,7 @@ const BottomSheet = () => {
           </header>
 
           <div className="body">{renderContent()}</div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
