@@ -6,7 +6,7 @@ import PHOTO_URL from "../image.png"; // adjust path as needed
 
 const GITHUB_URL = "https://github.com/puravking";
 const LINKEDIN_URL = "https://www.linkedin.com/in/purav-5641b7254/";
-const LEETCODE_URL = "https://leetcode.com/kumaprpurav59/";
+const LEETCODE_URL = "https://leetcode.com/kumarpurav59/";
 
 const BottomSheet = () => {
   const [classChange, setClassChange] = useState(false);
