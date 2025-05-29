@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import "./BottomSheet.css";
 
-import PHOTO_URL from "../image.png"; // adjust path as needed
+import PHOTO_URL from "../image.png";
 
 const GITHUB_URL = "https://github.com/puravking";
 const LINKEDIN_URL = "https://www.linkedin.com/in/purav-5641b7254/";
